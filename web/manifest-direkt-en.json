@@ -1,0 +1,6 @@
+{
+  "name": "Claude Usage Monitor (direkt, en)",
+  "version": "0.9.0",
+  "new_install_prompt_erase": true,
+  "builds": [{ "chipFamily": "ESP32-S3", "parts": [{ "path": "UsageMonitor-direkt-en.bin", "offset": 0 }] }]
+}

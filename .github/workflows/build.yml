@@ -1,0 +1,88 @@
+# Baut automatisch die Firmware und die 3D-Druck-Dateien
+# und veroeffentlicht alles auf der Projekt-Webseite (GitHub Pages).
+name: Bauen und veroeffentlichen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: arduino/setup-arduino-cli@v2
+
+      - name: ESP32-Unterstuetzung und Bibliotheken installieren
+        run: |
+          arduino-cli config init --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32
+          arduino-cli lib install LovyanGFX ArduinoJson WiFiManager
+
+      - name: Firmware bauen (2 Varianten x 2 Sprachen)
+        run: |
+          mkdir -p site/web
+          for v in direkt:1 hinten:3; do
+            for l in de:0 en:1; do
+              name=${v%%:*}; rot=${v##*:}; lang=${l%%:*}; en=${l##*:}
+              arduino-cli compile \
+                --fqbn "esp32:esp32:esp32s3:CDCOnBoot=cdc,FlashSize=4M,PartitionScheme=huge_app" \
+                --build-property "compiler.cpp.extra_flags=-DDISPLAY_ROTATION=${rot} -DLANGUAGE_EN=${en}" \
+                --output-dir "build-${name}-${lang}" firmware/UsageMonitor
+              cp "build-${name}-${lang}/UsageMonitor.ino.merged.bin" "site/web/UsageMonitor-${name}-${lang}.bin"
+            done
+          done
+
+      - name: Gehaeuse-Dateien (STL) erzeugen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openscad
+          for v in direkt hinten; do
+            for t in gehaeuse deckel fuss tasten; do
+              openscad -o "stl/usagemonitor_${v}_${t}.stl" -D "variante=\"${v}\"" -D "teil=\"${t}\"" enclosure/usagemonitor_gehaeuse.scad
+            done
+          done
+
+      - name: Webseite zusammenstellen
+        run: |
+          cp index.html site/
+          cp web/*.json web/*.svg site/web/
+          mkdir -p site/stl site/setup site/widget
+          cp stl/*.stl site/stl/
+          cp setup/*.ps1 site/setup/
+          cp widget/*.js site/widget/
+
+      - name: Ergebnis zum Herunterladen ablegen (auch bei privatem Projekt)
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-usage-monitor-site
+          path: site
+
+      - uses: actions/upload-pages-artifact@v3
+        if: ${{ !github.event.repository.private }}
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: github.event.repository.private == false
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

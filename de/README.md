@@ -1,6 +1,6 @@
 # Claude Usage Monitor 🖥️
 
-🇬🇧 [English](README.md) · 🇩🇪 **Deutsch**
+🇩🇪 **Deutsch** · 🇬🇧 [English](../en/README.md)
 
 **Ein Mini-Computermonitor im 90er-Retro-Look für den Schreibtisch, der dein Claude-Abo-Limit anzeigt.**
 Sitzung (5 Stunden), Woche (7 Tage) und wann es wieder zurückgesetzt wird. Mit Akku, Laden über USB-C, Gehäuse aus dem 3D-Drucker. Kosten: ca. 35 €, kein Löten nötig. Anzeige auf Deutsch oder Englisch.
@@ -9,7 +9,7 @@ Sitzung (5 Stunden), Woche (7 Tage) und wann es wieder zurückgesetzt wird. Mit 
 
 > **Für Einsteiger gemacht.** Du musst nicht programmieren und nicht löten können. Folge einfach den Schritten der Reihe nach.
 
-**🌐 Projektseite mit allen Downloads und Ein-Klick-Installation:** [apirz-ai.github.io/claude-usage-monitor](https://apirz-ai.github.io/claude-usage-monitor/)
+**🌐 Projektseite mit allen Downloads und Ein-Klick-Installation:** [apirz-ai.github.io/claude-usage-monitor](https://apirz-ai.github.io/claude-usage-monitor/de/)
 
 ## Schnellstart in 5 Schritten
 
@@ -154,8 +154,8 @@ Das nennt man **Flashen**: Die Software wird auf den kleinen Computer gespielt. 
 ### Einfach: im Browser (empfohlen)
 
 1. Gerät per **USB-C** an den Computer stecken.
-2. Die [**Projektseite**](https://apirz-ai.github.io/claude-usage-monitor/) in **Chrome** oder **Edge** öffnen (Safari und Firefox können das nicht).
-3. Oben die **Sprache** wählen, dann beim Knopf **deiner Gehäuse-Variante** („direkt“ oder „hinten“) auf **„Connect“** klicken → das Gerät auswählen → **Install**.
+2. Die [**Projektseite**](https://apirz-ai.github.io/claude-usage-monitor/de/) in **Chrome** oder **Edge** öffnen (Safari und Firefox können das nicht).
+3. Beim Knopf **deiner Gehäuse-Variante** („direkt“ oder „hinten“) auf **„Connect“** klicken → das Gerät auswählen → **Install**.
 4. Warten, bis „Installation complete“ erscheint. Fertig.
 
 **Wird das Gerät nicht gefunden?** Den **BOOT**-Knopf gedrückt halten, kurz **RST** drücken, BOOT loslassen. Dann noch einmal versuchen.
@@ -185,7 +185,7 @@ Das Gerät braucht einen **eigenen** Zugang zu deinem Claude-Konto, um die Werte
    ```powershell
    irm https://claude.ai/install.ps1 | iex
    ```
-2. **Einrichtungs-Skript** [`UsageMonitor-Einrichtung.ps1`](setup/UsageMonitor-Einrichtung.ps1) herunterladen (auch auf der [Projektseite](https://apirz-ai.github.io/claude-usage-monitor/)) und starten:
+2. **Einrichtungs-Skript** [`UsageMonitor-Einrichtung.ps1`](setup/UsageMonitor-Einrichtung.ps1) herunterladen (auch auf der [Projektseite](https://apirz-ai.github.io/claude-usage-monitor/de/)) und starten:
    ```powershell
    powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\UsageMonitor-Einrichtung.ps1"
    ```
@@ -251,7 +251,7 @@ Auch das iPhone braucht eine **eigene** Anmeldung, also das Skript für jedes Ge
 | Gerät geht im Akkubetrieb sofort aus | In `firmware/UsageMonitor/config.h` `BOARD_VERSION` auf `1` stellen und neu flashen (ältere Board-Version). |
 | Bildschirm bleibt nach der Installation schwarz | Die Pin-Nummern können je nach Board-Version abweichen. Mit der Waveshare-Pinbelegung vergleichen und in `config.h` anpassen. Bitte in den Issues melden. |
 | Farben sehen „negativ“ aus | In `config.h` `DISPLAY_INVERT` auf `false` stellen. |
-| Anzeige in der falschen Sprache | Auf der Projektseite die Sprache umstellen und neu installieren, oder in `config.h` `LANGUAGE_EN` auf `0` (Deutsch) bzw. `1` (Englisch). |
+| Anzeige in der falschen Sprache | Den englischen Ordner erwischt? Die Software aus dem Ordner `de/` installieren, oder in `config.h` `LANGUAGE_EN` auf `0` (Deutsch) bzw. `1` (Englisch). |
 | Bild steht auf dem Kopf | Auf der Webseite die **andere** Variante aufspielen (oder in `config.h` `DISPLAY_ROTATION` zwischen `1` und `3` wechseln). |
 | USB-C-Stecker passt nicht in die obere Mulde („direkt“) | In der `.scad`-Datei `stecker_b` / `stecker_d` größer machen und neu drucken. |
 | Gewinkelter USB-Stecker passt nicht rein („hinten“) | In der `.scad`-Datei `kabel_platz` größer machen (z. B. 13) und neu drucken. |
@@ -279,7 +279,8 @@ Kurz erklärt, damit du mitreden kannst:
 
 | Datei / Ordner | Was es ist | Brauchst du es? |
 |---|---|---|
-| `index.html` | Die Projektseite: alles auf einen Blick, Downloads, Ein-Klick-Installation | ✅ Start hier |
+| `de/` | Alles auf Deutsch: diese Anleitung und die Projektseite | ✅ Start hier |
+| `en/` | Dasselbe auf Englisch | – |
 | `stl/` | Die 8 fertigen Druckdateien (je Variante 4 Teile) | ✅ zum Drucken |
 | `setup/UsageMonitor-Einrichtung.ps1` | Windows-Skript: holt den Claude-Zugang für dein Gerät | ✅ einmal pro Gerät |
 | `widget/ClaudeUsage.js` | Bonus: dasselbe als iPhone-Widget | optional |

@@ -2,5 +2,5 @@
   "name": "Claude Usage Monitor (hinten, de)",
   "version": "0.9.0",
   "new_install_prompt_erase": true,
-  "builds": [{ "chipFamily": "ESP32-S3", "parts": [{ "path": "UsageMonitor-hinten-de.bin", "offset": 0 }] }]
+  "builds": [{ "chipFamily": "ESP32-S3", "parts": [{ "path": "UsageMonitor-hinten.bin", "offset": 0 }] }]
 }

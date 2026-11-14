@@ -1,20 +1,13 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claude Usage Monitor</title>
-<meta name="description" content="A tiny 90s-style monitor that shows your Claude plan limits. Parts, print files and one-click install.">
-<script type="module" src="https://unpkg.com/esp-web-tools@10.0.1/dist/web/install-button.js?module"></script>
-<script>
-  // Sprache vor dem Zeichnen setzen / set language before first paint
-  (function(){var r=document.documentElement,l;
-    try{l=localStorage.getItem('cum-lang')}catch(e){}
-    if(!l) l=(navigator.language||'en').toLowerCase().indexOf('de')===0?'de':'en';
-    r.dataset.lang=l; r.lang=l;
-    try{var t=localStorage.getItem('cum-theme'); if(t) r.dataset.theme=t}catch(e){}
-  })();
-</script>
+<script>(function(){try{var t=localStorage.getItem('cum-theme'); if(t) document.documentElement.dataset.theme=t}catch(e){}
+  // Automatisch zur passenden Sprache / go to the matching language
+  if(!/[?&]choose/.test(location.search)) location.replace(((navigator.language||'en').toLowerCase().indexOf('de')===0?'de':'en')+'/index.html');
+})();</script>
 <style>
 :root{--bg:#fff;--fg:#1d1d1f;--sub:#6e6e73;--card:#f5f5f7;--line:#d2d2d7;--accent:#D97757;--ok:#34c759;--wait:#ff9f0a}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#000;--fg:#f5f5f7;--sub:#98989d;--card:#1c1c1e;--line:#38383a}}
@@ -67,152 +60,13 @@ esp-web-install-button{display:inline-block}
 </style>
 </head>
 <body>
-<header>
-  <b>Claude Usage Monitor</b>
-  <div class="tools">
-    <div class="seg" role="group" aria-label="Language"><button type="button" data-l="de">DE</button><button type="button" data-l="en">EN</button></div>
-    <button class="pill" id="theme" type="button"><span lang="de">Hell / Dunkel</span><span lang="en">Light / Dark</span></button>
-  </div>
-</header>
-<main>
+<main style="text-align:center;padding-top:12vh">
   <h1>Claude Usage Monitor</h1>
-  <p class="lead"><span lang="de">Ein Mini-Monitor im 90er-Look für deinen Schreibtisch. Er zeigt dein Claude-Limit: Sitzung, Woche und wann es zurückgesetzt wird.</span><span lang="en">A tiny 90s-style monitor for your desk. It shows your Claude limits: session, week and when they reset.</span></p>
-
-  <div class="hero"><img src="web/hero.svg" alt="Claude Usage Monitor"></div>
-
-  <div class="chips">
-    <span>≈ 35 €</span>
-    <span lang="de">kein Löten</span><span lang="en">no soldering</span>
-    <span lang="de">Akku + USB-C</span><span lang="en">battery + USB-C</span>
-    <span>DE / EN</span>
+  <div class="hero"><img src="de/web/hero.svg" alt="Claude Usage Monitor"></div>
+  <div class="btns" style="justify-content:center">
+    <a class="main" href="de/index.html">Deutsch</a>
+    <a class="main" href="en/index.html">English</a>
   </div>
-  <div class="chips">
-    <span><i class="dot ok"></i><span lang="de">Teile und Druckdateien fertig</span><span lang="en">Parts and print files ready</span></span>
-    <span><i class="dot wait"></i><span lang="de">Software noch nicht am Gerät getestet</span><span lang="en">Software not yet tested on a device</span></span>
-  </div>
-
-  <div class="step"><span class="n">1</span>
-    <h2><span lang="de">Teile kaufen</span><span lang="en">Buy the parts</span></h2>
-    <p><span lang="de">Board mit Display und Akku, zusammen ca. 35 €. Dazu ein USB-C-Kabel.</span><span lang="en">Board with display and battery, about €35 together. Plus a USB-C cable.</span></p>
-    <div class="btns">
-      <a href="https://www.amazon.de/dp/B0D9PTZ5DY" target="_blank" rel="noopener">Board · Waveshare ESP32-S3-LCD-1.69</a>
-      <a href="https://www.amazon.de/dp/B0GJSH4J3S" target="_blank" rel="noopener"><span lang="de">Akku</span><span lang="en">Battery</span> · LiPo 803040</a>
-    </div>
-  </div>
-
-  <div class="step"><span class="n">2</span>
-    <h2><span lang="de">Gehäuse drucken</span><span lang="en">Print the case</span></h2>
-    <p><span lang="de">Vier Teile, eine Farbe, PLA, 0,2 mm, 15 %, ohne Stützen. Wähle deine Variante:</span><span lang="en">Four parts, one colour, PLA, 0.2 mm, 15 %, no supports. Pick your variant:</span></p>
-    <div class="var">
-      <div>
-        <h3><span lang="de">„direkt“ · empfohlen</span><span lang="en">"direkt" · recommended</span></h3>
-        <p><span lang="de">Kabel oben, jedes USB-C-Kabel passt.</span><span lang="en">Cable on top, any USB-C cable fits.</span></p>
-        <div class="btns">
-          <a href="stl/usagemonitor_direkt_gehaeuse.stl" download><span lang="de">Gehäuse</span><span lang="en">Case</span></a>
-          <a href="stl/usagemonitor_direkt_deckel.stl" download><span lang="de">Deckel</span><span lang="en">Lid</span></a>
-          <a href="stl/usagemonitor_direkt_fuss.stl" download><span lang="de">Fuß</span><span lang="en">Stand</span></a>
-          <a href="stl/usagemonitor_direkt_tasten.stl" download><span lang="de">Tasten</span><span lang="en">Buttons</span></a>
-        </div>
-      </div>
-      <div>
-        <h3><span lang="de">„hinten“</span><span lang="en">"hinten" · rear</span></h3>
-        <p><span lang="de">Kabel hinten, braucht ein 90°-Winkelkabel.</span><span lang="en">Cable at the back, needs a 90° angled cable.</span></p>
-        <div class="btns">
-          <a href="stl/usagemonitor_hinten_gehaeuse.stl" download><span lang="de">Gehäuse</span><span lang="en">Case</span></a>
-          <a href="stl/usagemonitor_hinten_deckel.stl" download><span lang="de">Deckel</span><span lang="en">Lid</span></a>
-          <a href="stl/usagemonitor_hinten_fuss.stl" download><span lang="de">Fuß</span><span lang="en">Stand</span></a>
-          <a href="stl/usagemonitor_hinten_tasten.stl" download><span lang="de">Tasten</span><span lang="en">Buttons</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="step"><span class="n">3</span>
-    <h2><span lang="de">Software aufspielen</span><span lang="en">Install the software</span></h2>
-    <p><span lang="de">Board per USB-C an den Computer stecken und in Chrome oder Edge den Knopf zu <b>deinem Gehäuse</b> klicken. Die Software ist gleich, nur das Bild wird passend gedreht. Die Anzeige erscheint in der oben gewählten Sprache.</span><span lang="en">Connect the board via USB-C and, in Chrome or Edge, click the button for <b>your case</b>. The software is the same, only the picture is rotated to fit. The display uses the language selected above.</span></p>
-    <div class="btns" id="flash"></div>
-    <p style="font-size:13px"><span lang="de">Gerät nicht gefunden? BOOT halten, RST kurz drücken, BOOT loslassen.</span><span lang="en">Device not found? Hold BOOT, tap RST, release BOOT.</span></p>
-  </div>
-
-  <div class="step"><span class="n">4</span>
-    <h2><span lang="de">Zusammenbauen</span><span lang="en">Assemble</span></h2>
-    <ul class="tight">
-      <li><b><span lang="de">Akku-Polung prüfen:</span><span lang="en">Check battery polarity:</span></b> <span lang="de">rot an +.</span><span lang="en">red to +.</span></li>
-      <li><span lang="de">Tasten einsetzen, Board quer mit Display nach vorne einlegen.</span><span lang="en">Insert the buttons, place the board sideways with the screen to the front.</span></li>
-      <li><span lang="de">Akku dahinter, Deckel drauf, auf den Fuß stecken.</span><span lang="en">Battery behind it, lid on, mount on the stand.</span></li>
-    </ul>
-  </div>
-
-  <div class="step"><span class="n">5</span>
-    <h2><span lang="de">Mit Claude verbinden</span><span lang="en">Connect to Claude</span></h2>
-    <ul class="tight">
-      <li><span lang="de">Einmalig Claude Code installieren:</span><span lang="en">Install Claude Code once:</span> <code>irm https://claude.ai/install.ps1 | iex</code></li>
-      <li><span lang="de">Einrichtungs-Skript starten, anmelden, „Gerät“ wählen.</span><span lang="en">Run the setup script, log in, choose "device".</span></li>
-      <li><span lang="de">WLAN <b>UsageMonitor-Setup</b> wählen, dein WLAN und den Token eintragen.</span><span lang="en">Join Wi-Fi <b>UsageMonitor-Setup</b>, enter your Wi-Fi and the token.</span></li>
-    </ul>
-    <div class="btns">
-      <a href="setup/UsageMonitor-Einrichtung.ps1" download><span lang="de">Einrichtungs-Skript (Windows)</span><span lang="en">Setup script (Windows)</span></a>
-      <a href="widget/ClaudeUsage.js" download><span lang="de">Bonus: iPhone-Widget</span><span lang="en">Bonus: iPhone widget</span></a>
-    </div>
-  </div>
-
-  <details>
-    <summary><span lang="de">Bedienung</span><span lang="en">Buttons</span></summary>
-    <table>
-      <tr><td>PWR</td><td><span lang="de">halten = einschalten (Akku)</span><span lang="en">hold = turn on (battery)</span></td></tr>
-      <tr><td>BOOT</td><td><span lang="de">kurz = neu laden · 3 s = aus · 10 s = alles zurücksetzen</span><span lang="en">tap = refresh · 3 s = off · 10 s = full reset</span></td></tr>
-    </table>
-  </details>
-
-  <details>
-    <summary><span lang="de">Was ist was? Die Dateien erklärt</span><span lang="en">What is what? The files explained</span></summary>
-    <table>
-      <tr><td>stl/</td><td><span lang="de">Die Druckdateien. Brauchst du zum Drucken.</span><span lang="en">Print files. Needed for printing.</span></td></tr>
-      <tr><td>setup/</td><td><span lang="de">Windows-Skript, holt den Claude-Zugang. Einmal pro Gerät.</span><span lang="en">Windows script that fetches the Claude login. Once per device.</span></td></tr>
-      <tr><td>widget/</td><td><span lang="de">Bonus für das iPhone.</span><span lang="en">Bonus for iPhone.</span></td></tr>
-      <tr><td>firmware/</td><td><span lang="de">Quellcode der Gerätesoftware. Wird automatisch gebaut und hier mit einem Klick aufgespielt.</span><span lang="en">Source code of the device software. Built automatically and installed here with one click.</span></td></tr>
-      <tr><td>enclosure/</td><td><span lang="de">Bauplan des Gehäuses. Daraus entstehen die Druckdateien. Nur zum Ändern.</span><span lang="en">Case source. The print files are made from it. Only to change things.</span></td></tr>
-      <tr><td>.github/</td><td><span lang="de">Bau-Automatik von GitHub. Nichts zu tun.</span><span lang="en">GitHub build automation. Nothing to do.</span></td></tr>
-    </table>
-  </details>
-
-  <p class="note"><span lang="de"><b>Tester gesucht:</b> Die Gerätesoftware ist geschrieben, aber noch nicht an echter Hardware getestet. Wer früher nachbaut, schreibt seine Erfahrungen gern in die Issues.</span><span lang="en"><b>Testers wanted:</b> the device software is written but not yet tested on real hardware. If you build it early, please share your experience in the Issues.</span></p>
-
-  <div class="btns">
-    <a href="https://github.com/Apirz-AI/claude-usage-monitor#readme" target="_blank" rel="noopener"><span lang="de">Ausführliche Anleitung</span><span lang="en">Full guide</span></a>
-    <a href="https://github.com/Apirz-AI/claude-usage-monitor/issues" target="_blank" rel="noopener">Issues</a>
-    <a href="https://github.com/Apirz-AI/claude-usage-monitor" target="_blank" rel="noopener">GitHub</a>
-  </div>
-
-  <footer>
-    <span lang="de">Idee und Entwicklung: A.Pirzadeh · Lizenz MIT · Inoffizielles Bastelprojekt. Claude ist eine Marke von Anthropic, dieses Projekt steht in keiner Verbindung zu Anthropic. Es nutzt eine nicht dokumentierte Schnittstelle, die sich ändern kann.</span>
-    <span lang="en">Idea and development: A.Pirzadeh · MIT license · Unofficial hobby project. Claude is a trademark of Anthropic; this project is not affiliated with Anthropic. It uses an undocumented interface that may change.</span>
-  </footer>
 </main>
-<script>
-(function(){
-  var r=document.documentElement;
-  function flash(){
-    var l=r.dataset.lang, box=document.getElementById('flash'); box.innerHTML='';
-    [['direkt', l==='de'?'Gehäuse „direkt“ (Kabel oben)':'Case "direkt" (cable on top)'],['hinten', l==='de'?'Gehäuse „hinten“ (Kabel hinten)':'Case "hinten" (cable at the back)']].forEach(function(v){
-      var b=document.createElement('esp-web-install-button');
-      b.setAttribute('manifest','web/manifest-'+v[0]+'-'+l+'.json');
-      var a=document.createElement('a'); a.slot='activate'; a.href='#'; 
-      a.textContent=(l==='de'?'Installieren · ':'Install · ')+v[1]; a.onclick=function(e){e.preventDefault()};
-      var u=document.createElement('span'); u.slot='unsupported'; u.style.fontSize='13px';
-      u.textContent=l==='de'?'Bitte Chrome oder Edge am Computer nehmen.':'Please use Chrome or Edge on a computer.';
-      b.appendChild(a); b.appendChild(u); box.appendChild(b);
-    });
-  }
-  document.querySelectorAll('.seg button').forEach(function(btn){
-    btn.onclick=function(){ r.dataset.lang=btn.dataset.l; r.lang=btn.dataset.l; try{localStorage.setItem('cum-lang',btn.dataset.l)}catch(e){} flash(); };
-  });
-  document.getElementById('theme').onclick=function(){
-    var dark=r.dataset.theme? r.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    r.dataset.theme=dark?'light':'dark'; try{localStorage.setItem('cum-theme',r.dataset.theme)}catch(e){}
-  };
-  flash();
-})();
-</script>
 </body>
 </html>

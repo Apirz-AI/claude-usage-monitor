@@ -77,7 +77,6 @@ jobs:
 
   deploy:
     needs: build
-    if: github.event.repository.private == false
     if: ${{ !github.event.repository.private }}
     runs-on: ubuntu-latest
     environment:

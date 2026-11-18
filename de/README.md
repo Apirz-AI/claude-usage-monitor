@@ -7,6 +7,10 @@ Sitzung (5 Stunden), Woche (7 Tage) und wann es wieder zurückgesetzt wird. Mit 
 
 ![Vorschau](docs/vorschau.png)
 
+> **Zwei Varianten, ein Projekt.**
+> 🔋 **Mit Akku** (kabellos nutzbar, ca. 35 €): **diese Seite**
+> 💶 **Ohne Akku** (Lite, günstiger, ca. 16 €, größeres 2,8-Zoll-Touch-Display): [Claude Usage Monitor Lite](https://github.com/Apirz-AI/claude-usage-monitor-lite) · [Projektseite](https://apirz-ai.github.io/claude-usage-monitor-lite/de/)
+
 > **Für Einsteiger gemacht.** Du musst nicht programmieren und nicht löten können. Folge einfach den Schritten der Reihe nach.
 
 **🌐 Projektseite mit allen Downloads und Ein-Klick-Installation:** [apirz-ai.github.io/claude-usage-monitor](https://apirz-ai.github.io/claude-usage-monitor/de/)

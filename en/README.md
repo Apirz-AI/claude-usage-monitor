@@ -7,6 +7,10 @@ Session (5 hours), week (7 days) and when they reset. Battery, USB-C charging, 3
 
 ![Preview](docs/vorschau.png)
 
+> **Two versions, one project.**
+> 🔋 **With battery** (cordless, about €35): **this page**
+> 💶 **Without battery** (Lite, cheaper, about €16, bigger 2.8" touch display): [Claude Usage Monitor Lite](https://github.com/Apirz-AI/claude-usage-monitor-lite) · [project page](https://apirz-ai.github.io/claude-usage-monitor-lite/en/)
+
 > **Made for beginners.** No coding, no soldering. Just follow the steps in order.
 
 **🌐 Project page with all downloads and one-click install:** [apirz-ai.github.io/claude-usage-monitor](https://apirz-ai.github.io/claude-usage-monitor/en/)

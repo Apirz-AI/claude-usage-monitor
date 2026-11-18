@@ -74,6 +74,8 @@ Preise: Stand November 2026. Auf AliExpress oft günstiger, dafür 1–3 Wochen 
 
 ## 2. Gehäuse drucken
 
+![Gehäuse in Cremeweiß](docs/gehaeuse.png)
+
 Es gibt **zwei Varianten**. Beide sehen von vorne gleich aus: ein kleiner 90er-Jahre-Röhrenmonitor mit Standfuß.
 
 | | **„direkt“** (empfohlen) | **„hinten“** |

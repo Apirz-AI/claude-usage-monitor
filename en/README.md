@@ -74,6 +74,8 @@ Prices as of November 2026. Outside Germany: search your local store for the sam
 
 ## 2. Print the case
 
+![Case in cream white](docs/gehaeuse.png)
+
 Two variants, identical from the front: a small 90s CRT monitor on a stand.
 
 | | **"direkt"** (recommended) | **"hinten"** (rear) |

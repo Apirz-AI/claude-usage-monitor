@@ -26,6 +26,9 @@
 
 variante = "direkt";  // [direkt, hinten]
 teil     = "alles";   // [gehaeuse, deckel, fuss, tasten, alles]
+farbe = "#EDE6D6";  // Knochenweiss / Cremeweiss = Farbe des Filaments. So zeigt die Vorschau (F5)
+                    // das Gehaeuse, wie es gedruckt aussieht. Andere Filamentfarbe? Hier anpassen.
+
 
 // ---------------- MASSE DER BAUTEILE (nachmessen!) --------------------
 // (Angaben wie im Datenblatt, also Board HOCHKANT gemessen)
@@ -255,6 +258,7 @@ module knopf() {
 
 // ---------------- Ausgabe --------------------------------------------
 fuss_hoehe = 6;
+color(farbe) {
 if (teil == "gehaeuse") {
   gehaeuse();
 } else if (teil == "deckel") {
@@ -270,4 +274,5 @@ if (teil == "gehaeuse") {
   translate([rue_x, aus_t + 10, rue_z + fuss_hoehe]) rotate([90,0,0]) translate([0,0,-deckel_t]) deckel();
   translate([aus_b + 8, 0, 0]) { taste(); translate([8,0,0]) taste();
     if (direkt) { translate([0,10,0]) knopf(); translate([10,10,0]) knopf(); } }
+}
 }
